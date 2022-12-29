@@ -64,7 +64,7 @@ class AuthController(
 
             response.addCookie(cookie)
 
-            return ResponseEntity.ok("Login successful")
+            return ResponseEntity.ok(cookie)
         } catch (e: Exception) {
             return ResponseEntity.badRequest().body(e.message)
         }

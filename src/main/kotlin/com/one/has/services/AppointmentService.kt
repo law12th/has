@@ -56,8 +56,8 @@ class AppointmentService(
         appointmentDTO.id = appointment.id
         appointmentDTO.appointmentTime = appointment.appointmentTime
         appointmentDTO.approval = appointment.approval
-        appointmentDTO.doctorId = appointment.doctor.id
-        appointmentDTO.patientId = appointment.patient.id
+        appointmentDTO.doctorName = appointment.doctor.firstName + " " + appointment.doctor.lastName
+        appointmentDTO.patientName = appointment.patient.firstName + " " + appointment.patient.lastName
 
         return appointmentDTO
     }
@@ -68,8 +68,8 @@ class AppointmentService(
         appointment.id = appointmentDTO.id
         appointment.appointmentTime = appointmentDTO.appointmentTime
         appointment.approval = appointmentDTO.approval
-        appointment.doctor = userRepository.findById(appointmentDTO.doctorId).get()
-        appointment.patient = userRepository.findById(appointmentDTO.patientId).get()
+        appointment.doctor = userRepository.findByFirstName(appointmentDTO.doctorName)!!
+        appointment.patient = userRepository.findByFirstName(appointmentDTO.patientName)!!
 
         return appointment
     }

@@ -1,6 +1,7 @@
 package com.one.has.controllers
 
 import com.one.has.dtos.AppointmentDTO
+import com.one.has.dtos.GetAppointmentsDTO
 import com.one.has.services.AppointmentService
 import com.one.has.services.UserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -36,11 +37,11 @@ class DoctorController(
         return ResponseEntity.ok(appointmentService.updateAppointment(appointmentDetails))
     }
 
-    @GetMapping("get-appointments")
+    @PostMapping("get-appointments")
     fun getActiveAppointments(
         @RequestBody
-        doctorId: Long
+        appointments: GetAppointmentsDTO
     ): ResponseEntity<MutableList<AppointmentDTO>> {
-       return ResponseEntity.ok(appointmentService.findAppointmentByDoctorId(doctorId))
+       return ResponseEntity.ok(appointmentService.findAppointmentByDoctorId(appointments.doctorId))
     }
 }

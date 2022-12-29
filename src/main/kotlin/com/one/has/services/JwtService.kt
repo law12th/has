@@ -17,6 +17,7 @@ class JwtService(
     fun generateJWTTokenForUser(userId: Long): String? {
         val claims = HashMap<String, Any>()
         claims["role"] = getUserRole(userId)
+        claims["userId"] = userId
 
         val now = Date()
 
