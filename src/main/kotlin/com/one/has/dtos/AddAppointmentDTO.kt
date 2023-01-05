@@ -1,12 +1,10 @@
 package com.one.has.dtos
 
-import java.time.LocalDateTime
-
-data class AppointmentDTO(
+data class AddAppointmentDTO(
     var id: Int = 0,
     var appointmentTime: String = "",
     var approval: Boolean = false,
     var details: String = "",
-    var doctorName: String = "",
-    var patientName: String = ""
+    var doctorId: Long = 0,
+    var patientId: Long = 0
 )

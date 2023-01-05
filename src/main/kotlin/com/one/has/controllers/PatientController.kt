@@ -1,5 +1,6 @@
 package com.one.has.controllers
 
+import com.one.has.dtos.AddAppointmentDTO
 import com.one.has.dtos.AppointmentDTO
 import com.one.has.services.AppointmentService
 import com.one.has.services.UserService
@@ -22,7 +23,7 @@ class PatientController(
     @PostMapping("add-appointment")
     fun addAppointment(
         @RequestBody
-        appointmentDetails: AppointmentDTO
+        appointmentDetails: AddAppointmentDTO
     ): ResponseEntity<AppointmentDTO> {
         return ResponseEntity.ok(appointmentService.saveAppointment(appointmentDetails))
     }

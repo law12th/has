@@ -1,5 +1,6 @@
 package com.one.has.controllers
 
+import com.one.has.dtos.AcceptAppointmentDTO
 import com.one.has.dtos.AppointmentDTO
 import com.one.has.dtos.GetAppointmentsDTO
 import com.one.has.services.AppointmentService
@@ -22,11 +23,11 @@ class DoctorController(
     @PostMapping("accept-appointment")
     fun acceptAppointment(
         @RequestBody
-        appointmentDetails: AppointmentDTO
-    ): ResponseEntity<AppointmentDTO> {
+        appointmentDetails: AcceptAppointmentDTO
+    ): ResponseEntity<Unit> {
        appointmentDetails.approval = true
 
-       return ResponseEntity.ok(appointmentService.updateAppointment(appointmentDetails))
+       return ResponseEntity.ok(appointmentService.acceptAppointment(appointmentDetails))
     }
 
     @PatchMapping("change-appointment")

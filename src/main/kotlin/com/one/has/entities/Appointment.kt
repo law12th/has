@@ -17,6 +17,9 @@ class Appointment {
     @Column(name = "approval", columnDefinition = "boolean default false")
     var approval: Boolean = false
 
+    @Column(name = "details")
+    var details: String = ""
+
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     var doctor: User = User()
